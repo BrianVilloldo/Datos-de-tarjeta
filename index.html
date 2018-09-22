@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lekton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Solo letras -->
+
+    <script src="js/Sololetras.js"></script>
+
+    <!-- Solo numeros -->
+
+    <script src="js/Solonumeros.js"></script>
+
+    <!--
+    DISEÑO DE LA TOMA DE DATOS
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <div ng-app="">
+      <form id="fondodatos" name = "form1" method = "post" action = "agregardatos.php">
+        <p class="titulos" id="titulogeneral"><b>Ingrese los datos de su tarjeta<b></p>
+        <lavel class="titulos"><b>Numero:<b></lavel>
+        <div id="numeros">
+          <b><input class="Numtarj" type="text"  maxlength="4" ng-model="num" onkeypress="return valida(event)" name="num1"></b>
+          <b><input class="Numtarj" type="text"  maxlength="4" ng-model="num1" onkeypress="return valida(event)" name="num2"></b>
+          <b><input class="Numtarj" type="text"  maxlength="4" ng-model="num2" onkeypress="return valida(event)" name="num3"></b>
+          <b><input class="Numtarj" type="text"  maxlength="4" ng-model="num3" onkeypress="return valida(event)" name="num4"></b>
+        </div>
+
+        <lavel class="titulos"><b>Nombre y apellido:<b></lavel>
+        <div id="nombrecompleto">
+          <input class="nombre" type="text" ng-model="nombre"onkeypress="return soloLetras(event)" name="nombre">
+          <input class="nombre" type="text" ng-model="apellido"onkeypress="return soloLetras(event)"name="apellido">
+        </div>
+
+        <div>
+          <lavel class="titulos" id="venctitulo"><b>Vencimiento: (mm/aa)<b></lavel> <lavel class="titulos" id="codigolavel"><b>CCV:<b></lavel>
+          <div id="vencimientos">
+            <select class="vencimiento" ng-model="vencimiento" name="venc1">
+              <option value="01">01</option>
+              <option value="02">02</option>
+              <option value="03">03</option>
+              <option value="04">04</option>
+              <option value="05">05</option>
+              <option value="06">06</option>
+              <option value="07">07</option>
+              <option value="08">08</option>
+              <option value="09">09</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <select class="vencimiento" ng-model="vencimiento1" name="venc2">
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+            </select>
+              <input class="ccv" type="text" ng-model="ccv" onkeypress="return valida(event)" maxlength="3" name="codigo">
+          </div>
+          <div id="boton">
+            <b><input type="submit" name="cargar" value="Cargar" id="botoncargar"></b>
+          </div>
+          <div >
+          </div>
+        </div>
+      </form>
+<!--
+DISEÑO DE LA TARJETA
+-->
+
+    <div>
+      <img id="tarjeta" src="imagenes/tarjetacompleta.png">
+      <div >
+        <div >
+          <div >
+            <p id="numerotarjeta" style="color:#fff">{{num}} {{num1}} {{num2}} {{num3}}</p>
+          </div>
+          <div>
+            <p id="codigo" style="color:#fff">ccv: {{ccv}}</p>
+          </div>
+          <div >
+            <p id="fechavencimiento" style="color:#fff">{{vencimiento}} / {{vencimiento1}}</p>
+          </div>
+          <div >
+            <p id="nombretarjeta" style="color:#fff">{{nombre}} {{apellido}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
